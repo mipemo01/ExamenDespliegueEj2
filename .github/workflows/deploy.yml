@@ -21,14 +21,14 @@ jobs:
       - name: Build and push DB Docker image
         run: |
           cd mysql
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/mi_cine:v1 .
-          docker push ${{ secrets.DOCKER_USERNAME }}/mi_cine:v1
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/sqlpinacoteca:v1 .
+          docker push ${{ secrets.DOCKER_USERNAME }}/sqlpinacoteca:v1
 
       - name: Build and push PHP Docker image
         run: |
           cd php
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/mi_app_cine:v1 .
-          docker push ${{ secrets.DOCKER_USERNAME }}/mi_app_cine:v1
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/phppinacotecav:v1 .
+          docker push ${{ secrets.DOCKER_USERNAME }}/phppinacotecav:v1
 
       - name: Transfer compose.yml to remote server
         uses: appleboy/scp-action@master
