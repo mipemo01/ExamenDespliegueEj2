@@ -1,4 +1,4 @@
-name: Deploy to Remote Server
+name: Deploy Pinacoteca
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Log in to DockerHub
+      - name: Login DockerHub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -27,8 +27,8 @@ jobs:
       - name: Build and push PHP Docker image
         run: |
           cd php
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/phppinacotecav:v1 .
-          docker push ${{ secrets.DOCKER_USERNAME }}/phppinacotecav:v1
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/phppinacoteca:v1 .
+          docker push ${{ secrets.DOCKER_USERNAME }}/phppinacoteca:v1
 
       - name: Transfer compose.yml to remote server
         uses: appleboy/scp-action@master
