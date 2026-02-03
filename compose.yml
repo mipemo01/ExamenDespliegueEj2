@@ -1,0 +1,18 @@
+services:
+  db:
+    image: mipemo01/sqlPinacoteca:v1
+    container_name: contenedorMiCine
+    ports:
+      - "3306:3306"
+    networks:
+      - mi-red
+
+  app:
+    image: mipemo01/phpPinacoteca:v1
+    container_name: contenedorMiApp
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - mi-red
